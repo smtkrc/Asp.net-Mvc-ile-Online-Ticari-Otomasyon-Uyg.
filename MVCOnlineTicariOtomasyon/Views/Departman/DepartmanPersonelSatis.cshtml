@@ -1,0 +1,55 @@
+﻿@using MVCOnlineTicariOtomasyon.Models.Sınıflar
+@model List<SatisHareket>
+
+@{
+    ViewBag.Title = "DepartmanPersonelSatis";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<style>
+    body {
+        background-color: darkgray
+    }
+</style>
+<br />
+<h2 style="font-style:oblique">Departman Personel Satış Ekranı</h2>
+<br />
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active" style="font-style:oblique;font-display:block">Personel Adı: @ViewBag.dp</li>
+</ol>
+<br />
+<table id="tbl4" class="table table-bordered" style="background-color: dimgray">
+    <tr>
+        <th style="color:white">Satış ID</th>
+        <th style="color:white">Ürün</th>
+        <th style="color:white">Cari</th>
+        <th style="color:white">Fiyat</th>
+        <th style="color:white">Adet</th>
+        <th style="color:white">Toplam</th>
+        <th style="color:white">Tarih</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td style="color:white">@x.SatisID</td>
+            <td style="color:white">@x.Urun.UrunAd</td>
+            <td style="color:white">@x.Cariler.CariAD @x.Cariler.CariSoyad</td>
+            <td style="color:white">@x.Fiyat</td>
+            <td style="color:white">@x.Adet</td>
+            <td style="color:white">@x.ToplamTutar</td>
+            <td style="color:white">@x.Tarih</td>
+        </tr>
+    }
+
+</table>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link href="~/Content/DataTables/css/dataTables.jqueryui.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+
+<script>
+    $('#tbl1').dataTable();
+</script>

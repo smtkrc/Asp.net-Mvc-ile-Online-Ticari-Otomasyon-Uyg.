@@ -1,0 +1,33 @@
+﻿@model MVCOnlineTicariOtomasyon.Models.Sınıflar.Personel
+@{
+    ViewBag.Title = "PersonelGetir";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<style>
+    body {
+        background-color: darkgray
+    }
+</style>
+<br />
+<h2>Personel Güncelleme Alanı</h2>
+<br />
+@using (Html.BeginForm("PersonelGuncelle", "Personel", FormMethod.Post))
+{
+<div class="form-group">
+    @Html.LabelFor(x => x.PersonelAd)
+    @Html.TextBoxFor(x => x.PersonelAd, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.PersonelSoyad)
+    @Html.TextBoxFor(x => x.PersonelSoyad, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Departman)
+    @Html.DropDownListFor(x => x.Departmanid, (List<SelectListItem>)ViewBag.dgr3, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.PersonelGorsel)
+    @Html.TextBoxFor(x => x.PersonelGorsel, new { @class = "form-control" })
+    <br />
+    @Html.HiddenFor(x => x.PersonelID)
+</div>
+}
+<button class="btn btn-warning">Kaydet</button>

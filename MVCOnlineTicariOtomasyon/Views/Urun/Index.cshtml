@@ -1,0 +1,63 @@
+﻿@using MVCOnlineTicariOtomasyon.Models.Sınıflar;
+@model List<Urun>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<style>
+    body {
+        background-color: darkgray
+    }
+</style>
+<br />
+<h2>Ürün Listesi</h2>
+<table id="tbl1" class="table table-bordered" style="background-color: dimgray">
+    <thead>
+        <tr>
+            <th style="color:white" width="10px">ID</th>
+            <th style="color:white">ÜRÜN</th>
+            <th style="color:white">MARKA</th>
+            <th style="color:white" width="12px">STOK</th>
+            <th style="color:white" width="150px">ALIŞ FİYAT</th>
+            <th style="color:white" width="150px">SATIŞ FİYAT</th>
+            <th style="color:white" width="300px">KATEGORİ</th>
+            <th style="color:white" width="300px">GÖRSEL</th>
+            <th style="color:white">SİL</th>
+            <th style="color:white" h>GÜNCELLE</th>
+        </tr>
+    </thead>
+    @foreach (var u in Model)
+    {
+        <tr>
+            <td style="color:black">@u.UrunID</td>
+            <td style="color:black">@u.UrunAd</td>
+            <td style="color:black">@u.Marka</td>
+            <td style="color:black">@u.Stok</td>
+            <td style="color:black">@u.AlisFiyat ₺</td>
+            <td style="color:black">@u.SatisFiyat ₺</td>
+            <td style="color:black">@u.Kategori.KATEGORIAD</td>
+            <td width="120" height="100" align="center"><img src=@u.UrunGorsel height="90" width="110"><a href="@u.UrunGorsel" class="btn alert-success">Görsel için tıklayınız</a></td>
+            <td style="color:white">
+                <a href="/Urun/UrunSil/@u.UrunID" class="btn btn-danger">SİL</a>
+            </td>
+            <td style="color:white">
+                <a href="/Urun/UrunGetir/@u.UrunID" class="btn btn-warning">GÜNCELLE</a>
+            </td>
+        </tr>
+    }
+</table>
+<a href="/Urun/YeniUrun" class="btn btn-primary" style="margin-left:20px;">Yeni Ürün Girişi</a>
+<br />
+<br />
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link href="~/Content/DataTables/css/dataTables.jqueryui.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+
+<script>
+    $('#tbl1').dataTable();
+</script>

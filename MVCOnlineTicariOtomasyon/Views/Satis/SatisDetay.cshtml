@@ -1,0 +1,61 @@
+﻿@using MVCOnlineTicariOtomasyon.Models.Sınıflar; 
+@model List<SatisHareket>
+@{
+    ViewBag.Title = "SatisDetay";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<style>
+    body {
+        background-color: darkgray
+    }
+</style>
+<br />
+<h2 style="font-style:oblique">Satış Ekranı</h2>
+<br />
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active" style="font-style:oblique;font-display:block">Personel Adı: @ViewBag.dp</li>
+</ol>
+<br />
+<table id="tbl8" class="table table-bordered" style="background-color: dimgray">
+    <tr>
+        <th>Satış ID</th>
+        <th>Ürün</th>
+        <th>Cari</th>
+        <th>Personel</th>
+        <th>Fiyat</th>
+        <th>Adet</th>
+        <th>Toplam</th>
+        <th>Tarih</th>
+        <th>Yazdır</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.SatisID</td>
+            <td>@x.Urun.UrunAd</td>
+            <td>@x.Cariler.CariAD @x.Cariler.CariSoyad</td>
+            <td>@x.Personel.PersonelAd @x.Personel.PersonelSoyad</td>
+            <td>@x.Fiyat</td>
+            <td>@x.Adet</td>
+            <td>@x.ToplamTutar</td>
+            <td>@x.Tarih</td>
+        </tr>
+    }
+
+</table>
+<button class="btn btn-default" style="background-color:dodgerblue">Yazdır</button>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link href="~/Content/DataTables/css/dataTables.jqueryui.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+
+<script>
+    $('#tbl8').dataTable();
+</script>
+
+
